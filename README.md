@@ -71,6 +71,69 @@ app.get('/greet/:name', function(req,res){
 navigate to `http://localhost:3000/greet/fadhel`
 <img width="365" height="167" alt="image" src="https://github.com/user-attachments/assets/4d83a9fe-924b-4c47-94a5-d76477be261d" />
 
+## Rendring ejs
+
+- install ejs wit `npm i ejs`
+- creat a `views` directory (folder)
+- creat an `.ejs` file like title `home.ejs`
+- add html boilerplate with `i + tab`
+
+ home.ejs example
+````html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h1> this is ejs page! 👾</h1>
+
+</body>
+</html>
+ ````
+-render `.ejs` page using a controller like this one:
+````js
+app.get('/', function(req,res){
+    res.render('home.ejs')
+})
+````
+<img width="425" height="202" alt="image" src="https://github.com/user-attachments/assets/c9f3104c-e6df-46e3-be40-e831e244d947" />
+
+### ejs syntax
+
+To use javascript and ejs filre, need a script tag
+````ejs
+<% let user ='fadhel' %>
+````
+To display javascript ehs file < tou need an outpot tag :
+````ejs
+<% let user ='fadhel' %>
+<%= user %>
+````
+
+### pass data from controller
+
+Use the locals object inside the render method:
+````js
+res.render('home.ejs', {
+        title: 'Home page',
+        })
+````
+now I can us the `title` varible in my `home.ejs` file.
+````
+<h1> <%= title %> this is ejs page! 👾</h1>
+````
+<img width="597" height="102" alt="image" src="https://github.com/user-attachments/assets/d079aab5-dbda-49af-bfde-f420242a9768" />
 
 
+### using foeEach for an arrey in ejs
 
+````ejs
+ul>
+<% inventory.forEach(function(item){ %>
+   <li> <%= item.name%> </li>
+<%})%>
+</ul>   
+````
