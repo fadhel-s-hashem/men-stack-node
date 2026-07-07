@@ -137,3 +137,12 @@ ul>
 <%})%>
 </ul>   
 ````
+
+### creating dynamic links to a `shoe` pag
+`item.name` is dynamic showing up. The Link is also dynamic changing with the item (see `forEach` above)
+
+````ejs
+<a href="/ <%= item.id %>"><&= item.name %></a>
+````
+
+
