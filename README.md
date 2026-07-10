@@ -17,6 +17,8 @@
 - creat `.gitignore` file
 - intilaize a node project `npm init -y`
 - install express and morgan `npm i express morgan`
+- usually neadt to install ejs wit `npm i ejs
+- if yoi use mongoose and dotenv `npm i mongoose dotenv`
 
  ### Add (node_modules) to (gitignore)
 
@@ -192,6 +194,39 @@ app.use(express.static(path.join(__dirname, "public")))
 ### image
 - creat `images` folder inside of the `public` folder
 - Link to images like normal : `<img src="/images/family.jpg" alt="A happy family">`
+
+## mango setup
+
+Install mongoose and dotenv `npm i mongoose dotenv`
+- crat an `.env` file
+- writ the `.env` file in git ignore
+-  add the connection string to `.env` file
+
+update our server.js
+````server.js
+// for mongoose and .env
+const dotenv = require('dotenv').config()
+//bring express and morgan into our server
+const express = require('express')
+const morgan = require('morgan')
+// for mongoose and .env
+const mongoose = require('mongoose')
+const dns = require('node:dns')
+dns.setServers(['8.8.8.8', '1.1.1.1'])
+
+// actuall use express
+const app = express ()
+// for mongoose and .env
+mongoose.connect(process.env.MONGODB_URI)
+mongoose.connection.on('connected', () =>{
+    console.log(`Connected to MongoDB ${mongoose.connection.name}`)
+})
+// for morgan
+app.use(morgan('dev'))
+````
+
+  
+
 
 
 
