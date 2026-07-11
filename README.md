@@ -123,6 +123,7 @@ res.render('home.ejs', {
         title: 'Home page',
         })
 ````
+the above code same as write `let titel = 'Home page'`
 now I can us the `title` varible in my `home.ejs` file.
 ````
 <h1> <%= title %> this is ejs page! 👾</h1>
