@@ -196,14 +196,33 @@ app.use(express.static(path.join(__dirname, "public")))
 - creat `images` folder inside of the `public` folder
 - Link to images like normal : `<img src="/images/family.jpg" alt="A happy family">`
 
-## mango setup
+## mpngoDB abd mongose setup
 
 Install mongoose and dotenv `npm i mongoose dotenv`
 - crat an `.env` file
 - writ the `.env` file in git ignore
 -  add the connection string to `.env` file
 
-update our server.js
+### connect to mongoDB
+At the top of `server.js`, load dotenv and Mongoose:
+
+````server.js
+const dotenv = require('dotenv').config()
+const mongoose = require('mongoose')
+````
+Connect to MongoDB after `const app = express()`
+````
+const app = express()
+
+// connect to mongoDB
+mongoose.connect(process.env.MONGODB_URI)
+
+mongoose.connection.on('connected', () => {
+    console.log(`Connected to MongoDB ${mongoose.connection.name} 🥭`)
+})
+````
+
+how updated server.js should look
 ````server.js
 // for mongoose and .env
 const dotenv = require('dotenv').config()
